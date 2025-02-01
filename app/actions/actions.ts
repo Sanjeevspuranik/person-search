@@ -27,7 +27,7 @@ export async function searchUsers(query: string): Promise<User[]> {
 }
 
 export async function addUser(data: Omit<User, 'id'>): Promise<User> {
-    let maxId = users.length > 0 ? Math.max(...users.map(user => Number(user.id))) : 0;
+    const maxId = users.length > 0 ? Math.max(...users.map(user => Number(user.id))) : 0;
     const newId = String(maxId + 1); // Assign the next consecutive ID
     // const newId = crypto.randomUUID();
     const newUser = { ...data, id: newId }
