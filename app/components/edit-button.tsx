@@ -3,8 +3,6 @@
 import { Button } from "@/components/ui/button"
 import { Edit } from "lucide-react"
 import { useState } from "react"
-import { updateUser } from '@/app/actions/actions'
-import { toast } from "@/hooks/use-toast"
 import { User } from '@/app/actions/schemas'
 import { UserEditDialog } from "./user-edit-dialog"
 
