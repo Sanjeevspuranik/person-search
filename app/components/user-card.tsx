@@ -1,11 +1,10 @@
-// components/user-card.tsx
-
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
 import { Phone, Mail } from 'lucide-react'
 import { getUserById } from '../actions/actions'
 import DeleteButton from './delete-button'
+import EditButton from './edit-button'
 
 interface UserCardProps {
   userId: string
@@ -46,6 +45,7 @@ export default async function UserCard({ userId }: UserCardProps) {
         )}
       </CardContent>
       <CardFooter className="flex justify-between items-center">
+        <EditButton user={user} />
         <DeleteButton userId={user.id} />
       </CardFooter>
     </Card>
