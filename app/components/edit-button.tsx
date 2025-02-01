@@ -15,25 +15,6 @@ interface EditButtonProps {
 export default function EditButton({ user }: EditButtonProps) {
   const [isOpen, setIsOpen] = useState(false)
 
-  const handleUpdate = async (updatedData: Partial<User>) => {
-    try {
-      const updatedUser = await updateUser(user.id, updatedData)
-      toast({
-        title: "User Updated",
-        description: `User ${updatedUser.name} updated successfully.`,
-        variant: "default",
-      })
-      setIsOpen(false)
-    } catch (error) {
-      console.error('EditButton: Error updating user', error)
-      toast({
-        title: "Error",
-        description: "An error occurred while updating the user.",
-        variant: "destructive",
-      })
-    }
-  }
-
   return (
     <>
       <Button onClick={() => setIsOpen(true)} variant="secondary">
