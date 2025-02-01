@@ -1,17 +1,21 @@
 'use client'
-/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { Button } from "@/components/ui/button"
 import { Edit } from "lucide-react"
 import { useState } from "react"
 import { updateUser } from '@/app/actions/actions'
 import { toast } from "@/hooks/use-toast"
+import { User } from '@/app/actions/schemas'
 import { UserEditDialog } from "./user-edit-dialog"
 
-export default function EditButton({ user }: { user: any }) {
+interface EditButtonProps {
+  user: User
+}
+
+export default function EditButton({ user }: EditButtonProps) {
   const [isOpen, setIsOpen] = useState(false)
 
-  const handleUpdate = async (updatedData: any) => {
+  const handleUpdate = async (updatedData: Partial<User>) => {
     try {
       const updatedUser = await updateUser(user.id, updatedData)
       toast({
@@ -19,7 +23,7 @@ export default function EditButton({ user }: { user: any }) {
         description: `User ${updatedUser.name} updated successfully.`,
         variant: "default",
       })
-      setIsOpen(false) // Close modal after successful update
+      setIsOpen(false)
     } catch (error) {
       console.error('EditButton: Error updating user', error)
       toast({
@@ -36,7 +40,7 @@ export default function EditButton({ user }: { user: any }) {
         <Edit className="w-4 h-4 mr-2" />
         Edit
       </Button>
-      {isOpen && <UserEditDialog user={user} onUpdate={handleUpdate} />}
+      {isOpen && <UserEditDialog user={user}/>}
     </>
   )
 }
