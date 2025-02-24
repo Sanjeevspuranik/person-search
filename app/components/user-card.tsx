@@ -46,7 +46,7 @@ export default function UserCard({ user }: UserCardProps) {
       <CardFooter className="flex justify-between items-center">
         <DeleteButton userId={user.id} />
         <UserEditDialog user={user} />
-        <EditButton user={user} />
+        {/* <EditButton user={user} /> */}
       </CardFooter>
     </Card>
   );
